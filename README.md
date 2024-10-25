@@ -17,7 +17,6 @@ This demo showcases how to implement database functionality in a Unity applicati
 1. Clone the Repository:
 
 ```bash
-Copy code
 git clone [repository-url]
 ```
 
