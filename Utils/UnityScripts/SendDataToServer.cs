@@ -49,17 +49,27 @@ To create a button in Unity that calls the SendIntegerToServer function when cli
 
 ... some codes here
 
+    public SendDataToServer sendDataToServer;
+    public int feedbackValue = -1;
+
+    void Start()
+    {
+        // Find the button and add a listener to it
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(OnButtonClick);
+    }
+
     private void OnButtonClick()
     {
-        // Get the integer from the InputField
-        if (int.TryParse(inputField.text, out int value))
+        // Check if feedbackValue is set and valid
+        if (feedbackValue >= 0)
         {
-            // Call the method in DatabaseManager to send the integer
-            SendDataToServer.SendIntegerToServer(value);
+            // Call the method in SendDataToServer to send the integer
+            sendDataToServer.SendIntegerToServer(feedbackValue);
         }
         else
         {
-            Debug.LogError("Invalid integer input.");
+            Debug.LogError("Invalid feedback value.");
         }
     }
 
